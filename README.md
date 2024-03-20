@@ -35,12 +35,12 @@ CRDs are included in the `/crd` directory and are installed automatically with t
 
 - **Updating CRDs**:
   ```
-  kubectl apply -f ./crd/<crd-file>.yaml
+  kubectl apply -f ./crd
   ```
 
 - **Removing CRDs**:
   ```
-  kubectl delete -f ./crd/<crd-file>.yaml
+  kubectl delete -f ./crd
   ```
 
 ## Configuration

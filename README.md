@@ -21,12 +21,12 @@ This Helm chart is designed to simplify the deployment and management of the `ka
 
 2. **Install the Kaspr operator**:
    ```
-   helm install kaspr-operator ./kaspr-helm --values operator.values.yaml -n kaspr-operator --create-namespace
+   helm install kaspr-operator . -f operator.values.yaml -n kaspr-operator --create-namespace
    ```
 
 3. **Install KafkaMessageScheduler resources**:
    ```
-   helm install kaspr-schedulers ./kaspr-helm --values kms.values.yaml
+   helm install kaspr-schedulers . -f kms.values.yaml
    ```
 
 ## Custom Resource Definitions (CRDs)

@@ -1,4 +1,5 @@
-{{- if and .Values.operator .Values.operator.enable .Values.operator.rbac.create .Values.operator.createGlobalResources -}}
+{{- if .Values.operator -}}
+{{- if and .Values.operator.enable .Values.operator.rbac.create .Values.operator.createGlobalResources -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -53,4 +54,5 @@ rules:
   - get
   - patch
   - update
+{{- end -}}
 {{- end -}}

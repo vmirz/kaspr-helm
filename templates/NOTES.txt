@@ -5,4 +5,4 @@
   kubectl --namespace {{ template "kaspr.operator.namespace" . }} get pods -l "app.kubernetes.io/name={{ include "kaspr.operator.name" . }}"
   {{- end }}
 
-Visit https://github.com/kaspr-operator/ for instructions on how to create & configure Kaspr custom resources.
+Visit https://github.com/totalwinelabs/kaspr-operator for instructions on how to create & configure Kaspr custom resources.

@@ -1,4 +1,5 @@
-{{- if and .Values.operator .Values.operator.enable .Values.operator.rbac.create }}
+{{- if .Values.operator -}}
+{{- if and .Values.operator.enable .Values.operator.rbac.create -}}
 {{- $root := . -}}
 {{- $opns := include "kaspr.operator.namespace" . -}}
 {{- range append .Values.operator.watchNamespaces $opns }}
@@ -23,5 +24,6 @@ roleRef:
   kind: ClusterRole
   name: kaspr-operator-watched
   apiGroup: rbac.authorization.k8s.io
+{{- end }}
 {{- end }}
 {{- end }}

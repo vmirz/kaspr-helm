@@ -1,0 +1,58 @@
+
+# A list of kafka message scheduler apps to deploy.
+kafkaMessageSchedulers:
+
+- # Scheduler app name
+  name: my-scheduler
+  
+  # Number of kafka scheduler workers.
+  # Kafka topic partitions are distributed across workers.
+  # Increase the number of workers for higher throughput. 
+  # (The number of workers should be no more than the number of topic partitions)
+  replicas: 1
+  
+  # Kafka bootstrap server URL(s)
+  bootstrapServers: localhost:9092
+
+  # TLS configuration. Provide an empty entry `{}` to enable TLS.
+  tls: {}
+
+  # Authentication type. 
+  authentication:
+    # Supported types are `scram-sha-256`, `scram-sha-512`, and `plain
+    type: plain
+    username: kafka-user
+    passwordSecret:
+      secretName: kafka-credentials
+      passwordKey: password
+
+  # Kafka Message Scheduler application settings
+  # See XXX for information about all available configurations.
+  config:
+    topic_partitions: 3
+    web_port: 6065
+    web_metrics_base_path: /kms
+    kms_checkpoint_save_interval_seconds: 5
+    kms_janitor_clean_interval_seconds: 20
+    kms_janitor_highwater_offset_seconds: 86400
+
+  # Resource requests and limits
+  resources: {}
+    # requests:
+    #   cpu: 0.1
+    #   memory: 512Mi
+    # limits:
+    #   cpu: 1
+    #   memory: 512Mi
+    
+  # Data storage configuration
+  storage:
+    # Storage type must be 'persistent-claim'"
+    type: persistent-claim
+    # The storage class to use for dynamic volume allocation.
+    class: standard
+    # Defines the size of the persistent volume claim (i.e 1Gi). 
+    size: 268Mi
+    # Specifies if the persistent volume claim has to be deleted 
+    # when the app is un-deployed.
+    deleteClaim: True

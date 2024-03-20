@@ -1,3 +1,4 @@
+# This file is for deploying Kafka Message Scheduler (KMS) application(s).
 
 # A list of kafka message scheduler apps to deploy.
 kafkaMessageSchedulers:

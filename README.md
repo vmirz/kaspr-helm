@@ -1,4 +1,4 @@
-# kaspr-operator Helm Chart
+# Kaspr Helm
 
 This Helm repository is designed to simplify the deployment and management of the `kaspr-operator` and its related custom resources, specifically the `KafkaMessageScheduler`, in your Kubernetes cluster. 
 
@@ -22,13 +22,17 @@ This repository comes with two charts:
    ```
 
 2. **Install the Kaspr operator**:
+
+    The command below installs the Kaspr operator using the default values file included with the chart, which is sufficient for most deployments. However, if you wish to fine-tune the deployment according to your specific needs, you can provide your own values file.
    ```
-   helm install kaspr-operator charts/operator -f values.yaml -n kaspr-operator --create-namespace
+   helm install kaspr-operator charts/operator -n kaspr-operator --create-namespace
    ```
 
 3. **Install KafkaMessageScheduler resources**:
+
+    To properly create the resources you want, you should provide a custom values file that overrides the default settings to meet your specific configuration needs. You can use the -f or --values flag to specify your own values file during the installation. For example, if you have a custom values file named my-kms-values.yaml, you can install the KafkaMessageScheduler resources like this:
    ```
-   helm install kaspr-schedulers charts/resources -f values.yaml
+   helm install kaspr-scheduler charts/resources -f my-kms-values.yaml
    ```
 
 ## Custom Resource Definitions (CRDs)
@@ -52,7 +56,7 @@ The Helm chart supports configurations through values files:
 - **`charts/operator/values.yaml`**: Configures the deployment of the Kaspr operator.
 - **`charst/reseources/values.yaml`**: Configures the KafkaMessageScheduler resources.
 
-Refer to these files for detailed configuration options.
+Refer to these files for detailed configuration options. You should provide a custom values file that overrides the default settings when deploying kaspr custom resources to meet your specific needs.
 
 ## Operator Installation Modes
 

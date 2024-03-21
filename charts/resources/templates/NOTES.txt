@@ -26,8 +26,9 @@
 The following kaspr custom resources have been installed:
 
 {{- if .Values.kafkaMessageSchedulers }}
+kafkaMessageSchedulers:
 {{- $ns := include "kaspr.kms.namespace" . -}}
 {{- range .Values.kafkaMessageSchedulers }}
-    (kafkaMessageScheduler) {{ $ns }}/{{ .name }}
+    - {{ $ns }}/{{ .name }}
 {{- end}}
 {{- end}}

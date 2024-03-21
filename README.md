@@ -1,10 +1,12 @@
 # kaspr-operator Helm Chart
 
-This Helm chart is designed to simplify the deployment and management of the `kaspr-operator` and its associated resources, specifically the `KafkaMessageScheduler`, in your Kubernetes cluster. 
+This Helm repository is designed to simplify the deployment and management of the `kaspr-operator` and its related custom resources, specifically the `KafkaMessageScheduler`, in your Kubernetes cluster. 
 
 ## Introduction
 
-`kaspr-helm` is a Helm chart for deploying the Kaspr operator and its associated resources, including the KafkaMessageScheduler, in Kubernetes environments.
+This repository comes with two charts:
+- The `operator` chart is for deploying the kaspr kubernetes operator application.
+- The `resources` chart is for deploying kaspr custom resources, specifically the KafkaMessageScheduler, in Kubernetes environments.
 
 ## Prerequisites
 
@@ -21,40 +23,40 @@ This Helm chart is designed to simplify the deployment and management of the `ka
 
 2. **Install the Kaspr operator**:
    ```
-   helm install kaspr-operator . -f operator.values.yaml -n kaspr-operator --create-namespace
+   helm install kaspr-operator charts/operator -f values.yaml -n kaspr-operator --create-namespace
    ```
 
 3. **Install KafkaMessageScheduler resources**:
    ```
-   helm install kaspr-schedulers . -f kms.values.yaml
+   helm install kaspr-schedulers charts/resources -f values.yaml
    ```
 
 ## Custom Resource Definitions (CRDs)
 
-CRDs are included in the `/crd` directory and are installed automatically with the Helm chart. However, they need to be manually updated or removed when necessary.
+CRDs are included in the `/crds` directory of the operator chart and are installed automatically with the Helm chart. However, they need to be manually updated or removed when necessary.
 
 - **Updating CRDs**:
   ```
-  kubectl apply -f ./crd
+  kubectl apply -f ./charts/operator/crds
   ```
 
 - **Removing CRDs**:
   ```
-  kubectl delete -f ./crd
+  kubectl delete -f ./charts/operator/crds
   ```
 
 ## Configuration
 
-The Helm chart supports various configurations through values files:
+The Helm chart supports configurations through values files:
 
-- **`operator.values.yaml`**: Configures the deployment of the Kaspr operator.
-- **`kms.values.yaml`**: Configures the KafkaMessageScheduler resources.
+- **`charts/operator/values.yaml`**: Configures the deployment of the Kaspr operator.
+- **`charst/reseources/values.yaml`**: Configures the KafkaMessageScheduler resources.
 
 Refer to these files for detailed configuration options.
 
 ## Operator Installation Modes
 
-- **Cluster-wide**: Set `watchAnyNamespace` to `True` in `operator.values.yaml` for the operator to monitor resources across all namespaces.
+- **Cluster-wide**: Set `watchAnyNamespace` to `True` in operator's `values.yaml` for the operator to monitor resources across all namespaces.
 - **Namespace-specific**: Define specific namespaces in `watchNamespaces` in `operator.values.yaml`. The operator's deployment namespace is always included.
 
 ## Uninstallation

@@ -1,4 +1,4 @@
-# kaspr-operator Helm Chart
+# Kaspr Helm
 
 This Helm repository is designed to simplify the deployment and management of the `kaspr-operator` and its related custom resources, specifically the `KafkaMessageScheduler`, in your Kubernetes cluster. 
 

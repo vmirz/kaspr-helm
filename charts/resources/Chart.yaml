@@ -1,0 +1,9 @@
+apiVersion: v2
+name: kaspr-resources
+description: A Helm chart for deploying Kaspr custom resources to Kubernetes.
+
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart, its templates or underlying CRDs.
+version: 1.0.0

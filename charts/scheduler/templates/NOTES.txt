@@ -1,3 +1,0 @@
-{{ $.Chart.Name }} has been installed.
-
-Visit https://github.com/kaspr-operator/ for instructions on how to create & configure Kaspr custom resources.

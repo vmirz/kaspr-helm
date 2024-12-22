@@ -1,33 +1,21 @@
 {{- if .Values.operator -}}
-{{- if and .Values.operator.enable .Values.operator.rbac.create }}
-{{- $root := . -}}
-{{- $opns := include "kaspr.operator.namespace" . -}}
-{{- range append .Values.operator.watchNamespaces $opns }}
----
+{{- if .Values.operator.enable -}}
+{{- if and .Values.operator.rbac.create .Values.operator.watchAnyNamespace -}}
 apiVersion: rbac.authorization.k8s.io/v1
-{{- if $root.Values.operator.watchAnyNamespace }}
 kind: ClusterRoleBinding
-{{- else }}
-kind: RoleBinding
-{{- end }}
 metadata:
-  {{- if $root.Values.operator.watchAnyNamespace }}
-  name: kaspr-operator-namespaced
-  {{- else }}
   name: kaspr-operator
-  {{- end }}
-  namespace: {{ . }}
   labels:
     component: role-binding
-    {{- include "kaspr.operator.labels" $root | nindent 4 }}   
+    {{- include "kaspr.operator.labels" . | nindent 4 }}
 subjects:
   - kind: ServiceAccount
-    name: {{ include "kaspr.operator.serviceAccountName" $root }}
-    namespace: {{ include "kaspr.operator.namespace" $root }}
+    name: {{ include "kaspr.operator.serviceAccountName" . }}
+    namespace: {{ include "kaspr.operator.namespace" . }}
 roleRef:
   kind: ClusterRole
-  name: kaspr-operator-namespaced
+  name: kaspr-operator
   apiGroup: rbac.authorization.k8s.io
-{{- end }}
-{{- end }}
-{{- end }}
+{{- end -}}
+{{- end -}}
+{{- end -}}

@@ -1,13 +1,17 @@
 {{- if .Values.operator -}}
-{{- if .Values.operator.enable -}}
-{{- if and .Values.operator.rbac.create .Values.operator.watchAnyNamespace -}}
+{{- if and .Values.operator.enable .Values.operator.rbac.create (not .Values.operator.watchAnyNamespace) }}
+{{- $root := . -}}
+{{- $opns := include "kaspr.operator.namespace" . -}}
+{{- range append .Values.operator.watchNamespaces $opns }}
+---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata:
-  name: kaspr-operator
+  name: kaspr-operator-namespaced
+  namespace: {{ . }}
   labels:
     component: role
-    {{- include "kaspr.operator.labels" . | nindent 4 }}
+    {{- include "kaspr.operator.labels" $root | nindent 4 }}
 rules:
 
 # Resources in this role are used by the operator based on an operand being deployed in some namespace. When needed, you

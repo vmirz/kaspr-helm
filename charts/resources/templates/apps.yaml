@@ -1,0 +1,12 @@
+{{- if .Values.apps }}
+{{- $root := . -}}
+{{- range .Values.apps }}
+---
+apiVersion: kaspr.io/v1alpha1
+kind: KasprApp
+metadata:
+  name: {{ .name }}
+spec: 
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end }}

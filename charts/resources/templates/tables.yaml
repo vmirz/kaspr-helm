@@ -1,0 +1,12 @@
+{{- if .Values.tables }}
+{{- $root := . -}}
+{{- range .Values.tables }}
+---
+apiVersion: kaspr.io/v1alpha1
+kind: KasprTable
+metadata:
+  name: {{ .name }}
+spec: 
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end }}

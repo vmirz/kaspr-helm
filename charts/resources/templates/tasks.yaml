@@ -1,0 +1,12 @@
+{{- if .Values.tasks }}
+{{- $root := . -}}
+{{- range .Values.tasks }}
+---
+apiVersion: kaspr.io/v1alpha1
+kind: KasprTask
+metadata:
+  name: {{ .name }}
+spec: 
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end }}

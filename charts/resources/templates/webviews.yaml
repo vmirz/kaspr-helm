@@ -1,0 +1,12 @@
+{{- if .Values.webviews }}
+{{- $root := . -}}
+{{- range .Values.webviews }}
+---
+apiVersion: kaspr.io/v1alpha1
+kind: KasprWebView
+metadata:
+  name: {{ .name }}
+spec: 
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end }}

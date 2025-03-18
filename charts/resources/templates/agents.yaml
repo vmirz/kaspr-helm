@@ -1,9 +1,9 @@
-{{- if .Values.kafkaMessageSchedulers }}
+{{- if .Values.agents }}
 {{- $root := . -}}
-{{- range .Values.kafkaMessageSchedulers }}
+{{- range .Values.agents }}
 ---
 apiVersion: kaspr.io/v1alpha1
-kind: KafkaMessageScheduler
+kind: KasprAgent
 metadata:
   name: {{ .name }}
 spec: 

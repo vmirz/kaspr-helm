@@ -1,16 +1,16 @@
 apiVersion: v2
 name: kaspr-operator
-description: A Helm chart for deploying kasp kubernetes operator.
+description: A Helm chart for deploying Kaspr kubernetes operator.
 
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.7
+version: 0.2.2
 
 # This is the version number of the kaspr-operator being deployed. This version number should be
 # incremented whenever there's a new version of kaspr-operator. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.1.10"
+appVersion: "0.3.7"

@@ -36,7 +36,9 @@ rules:
   - "kaspr.io"
   resources:
   # The Kasp operator operates on these custom resources
-  - kafkamessageschedulers
+  - kasprapps
+  - kaspragents
+  - kasprwebviews
   verbs:
   - get
   - list
@@ -50,7 +52,9 @@ rules:
   - "kaspr.io"
   resources:
   # The Cluster Operator needs to manage the status of the Strimzi custom resources
-  - kafkamessageschedulers/status
+  - kasprapps/status
+  - kaspragents/status
+  - kasprwebviews/status
   verbs:
   - get
   - patch

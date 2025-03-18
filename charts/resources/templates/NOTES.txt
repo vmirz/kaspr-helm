@@ -25,10 +25,42 @@
 
 The following kaspr custom resources have been installed:
 
-{{- if .Values.kafkaMessageSchedulers }}
-kafkaMessageSchedulers:
-{{- $ns := include "kaspr.kms.namespace" . -}}
-{{- range .Values.kafkaMessageSchedulers }}
+{{- if .Values.apps }}
+apps:
+{{- $ns := include "kaspr.namespace" . -}}
+{{- range .Values.apps }}
+    - {{ $ns }}/{{ .name }}
+{{- end}}
+{{- end}}
+
+{{- if .Values.agents }}
+agents:
+{{- $ns := include "kaspr.namespace" . -}}
+{{- range .Values.agents }}
+    - {{ $ns }}/{{ .name }}
+{{- end}}
+{{- end}}
+
+{{- if .Values.tables }}
+tables:
+{{- $ns := include "kaspr.namespace" . -}}
+{{- range .Values.tables }}
+    - {{ $ns }}/{{ .name }}
+{{- end}}
+{{- end}}
+
+{{- if .Values.webviews }}
+webviews:
+{{- $ns := include "kaspr.namespace" . -}}
+{{- range .Values.webviews }}
+    - {{ $ns }}/{{ .name }}
+{{- end}}
+{{- end}}
+
+{{- if .Values.tasks }}
+tasks:
+{{- $ns := include "kaspr.namespace" . -}}
+{{- range .Values.tasks }}
     - {{ $ns }}/{{ .name }}
 {{- end}}
 {{- end}}

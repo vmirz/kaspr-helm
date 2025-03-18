@@ -19,12 +19,13 @@ operator:
     # Set to `yes` to create all necessary roles and role bindings for the operator to function.
     # Otherwise, you will need to manage RBAC manually.
     create: yes
+  createGlobalResources: true
 
   image:
     repository: kasprio/kaspr-operator
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "0.1.10"
+    tag: ""
 
   imagePullSecrets: []
   nameOverride: ""

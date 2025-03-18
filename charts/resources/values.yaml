@@ -1,7 +1,8 @@
-# This file is for deploying Kafka Message Scheduler (KMS) application(s).
+# Deploy various kaspr custom resources
+# -------------------------------------
 
-# A list of kafka message scheduler apps to deploy.
-kafkaMessageSchedulers:
+# A list of kaspr to deploy.
+apps:
 
 - # Scheduler app name
   name: my-scheduler
@@ -27,15 +28,15 @@ kafkaMessageSchedulers:
       secretName: kafka-credentials
       passwordKey: password
 
-  # Kafka Message Scheduler application settings
+  # Application configuration
   # See XXX for information about all available configurations.
   config:
     topic_partitions: 3
     web_port: 6065
-    web_metrics_base_path: /kms
-    kms_checkpoint_save_interval_seconds: 5
-    kms_janitor_clean_interval_seconds: 20
-    kms_janitor_highwater_offset_seconds: 86400
+    web_metrics_base_path: /scheduler/metrics
+    scheduler_checkpoint_save_interval_seconds: 5
+    scheduler_janitor_clean_interval_seconds: 20
+    scheduler_janitor_highwater_offset_seconds: 86400
 
   # Resource requests and limits
   resources: {}
@@ -57,3 +58,9 @@ kafkaMessageSchedulers:
     # Specifies if the persistent volume claim has to be deleted 
     # when the app is un-deployed.
     deleteClaim: True
+
+# TODO
+agents: []
+tables: []
+tasks: []
+webviews: []    

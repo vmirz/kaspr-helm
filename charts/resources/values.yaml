@@ -31,12 +31,12 @@ apps:
   # Application configuration
   # See XXX for information about all available configurations.
   config:
-    topic_partitions: 3
-    web_port: 6065
-    web_metrics_base_path: /scheduler/metrics
-    scheduler_checkpoint_save_interval_seconds: 5
-    scheduler_janitor_clean_interval_seconds: 20
-    scheduler_janitor_highwater_offset_seconds: 86400
+    topicPartitions: 3
+    webPort: 6065
+    webMetricsBasePath: /scheduler/metrics
+    schedulerCheckpointSaveIntervalSeconds: 5
+    schedulerJanitorCleanIntervalSeconds: 20
+    schedulerJanitorHighwaterOffsetSeconds: 86400
 
   # Resource requests and limits
   resources: {}

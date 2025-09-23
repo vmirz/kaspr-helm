@@ -71,6 +71,19 @@ rules:
   - get
   - list
   - watch
+- apiGroups:
+  - "autoscaling"
+  resources:
+    # The operator needs to access and manage horizontal pod autoscalers to enable auto-scaling of Kaspr components
+  - horizontalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - delete
+  - patch
+  - update
 {{- end -}}
 {{- end -}}
 {{- end -}}

@@ -60,6 +60,17 @@ operator:
     type: ClusterIP  
     port: 80
 
+  env:
+    # Optional environment variables for the operator
+    # Set initial maximum replicas for HPA (if not specified, operator uses default)
+    initialMaxReplicas: ""
+    # Set HPA scale up policy - number of pods to add per scaling step
+    hpaScaleUpPolicyPodsPerStep: ""
+    # Set HPA scale up policy - period in seconds between scaling steps
+    hpaScaleUpPolicyPeriodSeconds: ""
+    # Set timeout in seconds for StatefulSet deletion operations
+    statefulsetDeletionTimeoutSeconds: ""
+
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little

@@ -54,6 +54,23 @@ spec:
             {{- end }}
             {{- end }}
             - --liveness=http://0.0.0.0:{{.Values.operator.service.port}}/healthz
+          env:
+            {{- if .Values.operator.env.initialMaxReplicas }}
+            - name: INITIAL_MAX_REPLICAS
+              value: "{{ .Values.operator.env.initialMaxReplicas }}"
+            {{- end }}
+            {{- if .Values.operator.env.hpaScaleUpPolicyPodsPerStep }}
+            - name: HPA_SCALE_UP_POLICY_PODS_PER_STEP
+              value: "{{ .Values.operator.env.hpaScaleUpPolicyPodsPerStep }}"
+            {{- end }}
+            {{- if .Values.operator.env.hpaScaleUpPolicyPeriodSeconds }}
+            - name: HPA_SCALE_UP_POLICY_PERIOD_SECONDS
+              value: "{{ .Values.operator.env.hpaScaleUpPolicyPeriodSeconds }}"
+            {{- end }}
+            {{- if .Values.operator.env.statefulsetDeletionTimeoutSeconds }}
+            - name: STATEFULSET_DELETION_TIMEOUT_SECONDS
+              value: "{{ .Values.operator.env.statefulsetDeletionTimeoutSeconds }}"
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.operator.service.port }}

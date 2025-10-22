@@ -70,7 +70,7 @@ operator:
     hpaScaleUpPolicyPeriodSeconds: ""
     # Set timeout in seconds for StatefulSet deletion operations
     statefulsetDeletionTimeoutSeconds: ""
-    # Enable periodic status check calls to all kaspr workers
+    # Enable or disable client status checks
     clientStatusCheckEnabled: ""
 
   resources: {}

@@ -75,6 +75,10 @@ spec:
             - name: CLIENT_STATUS_CHECK_ENABLED
               value: "{{ .Values.operator.env.clientStatusCheckEnabled }}"
             {{- end }}
+            {{- if .Values.operator.env.clientStatusCheckTimeoutSeconds }}
+            - name: CLIENT_STATUS_CHECK_TIMEOUT_SECONDS
+              value: "{{ .Values.operator.env.clientStatusCheckTimeoutSeconds }}"
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.operator.service.port }}

@@ -70,6 +70,8 @@ operator:
     hpaScaleUpPolicyPeriodSeconds: ""
     # Set timeout in seconds for StatefulSet deletion operations
     statefulsetDeletionTimeoutSeconds: ""
+    # Enable or disable client status checks
+    clientStatusCheckEnabled: ""
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious

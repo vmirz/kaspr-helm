@@ -72,6 +72,8 @@ operator:
     statefulsetDeletionTimeoutSeconds: ""
     # Enable or disable client status checks
     clientStatusCheckEnabled: ""
+    # Set client status check timeout in seconds
+    clientStatusCheckTimeoutSeconds: ""
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious

@@ -39,10 +39,9 @@ spec:
             {{- toYaml .Values.operator.securityContext | nindent 12 }}
           image: "{{ .Values.operator.image.repository }}:{{ .Values.operator.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.operator.image.pullPolicy }}
-          command: ["kopf"]
+          command: ["python3"]
           args:
-            - run
-            - kaspr/app.py
+            - /usr/src/app/run_operator.py
             {{- if .Values.operator.watchAnyNamespace }}
             - --all-namespaces
             {{- else }}
@@ -84,6 +83,7 @@ spec:
               containerPort: {{ .Values.operator.service.port }}
               protocol: TCP
           livenessProbe:
+            periodSeconds: 30
             httpGet:
               path: /healthz
               port: 80

@@ -52,7 +52,6 @@ spec:
             - --namespace={{ . }}
             {{- end }}
             {{- end }}
-            - --liveness=http://0.0.0.0:{{.Values.operator.service.port}}/healthz
           env:
             {{- if .Values.operator.env.initialMaxReplicas }}
             - name: INITIAL_MAX_REPLICAS
@@ -82,11 +81,6 @@ spec:
             - name: http
               containerPort: {{ .Values.operator.service.port }}
               protocol: TCP
-          livenessProbe:
-            periodSeconds: 30
-            httpGet:
-              path: /healthz
-              port: 80
           resources:
             {{- toYaml .Values.operator.resources | nindent 12 }}
       {{- with .Values.operator.nodeSelector }}

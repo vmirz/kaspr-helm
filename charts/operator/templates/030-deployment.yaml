@@ -77,6 +77,10 @@ spec:
             - name: CLIENT_STATUS_CHECK_TIMEOUT_SECONDS
               value: "{{ .Values.operator.env.clientStatusCheckTimeoutSeconds }}"
             {{- end }}
+            {{- if .Values.operator.env.autoRebalanceEnabled }}
+            - name: AUTO_REBALANCE_ENABLED
+              value: "{{ .Values.operator.env.autoRebalanceEnabled }}"
+            {{- end }}            
           ports:
             - name: http
               containerPort: {{ .Values.operator.service.port }}

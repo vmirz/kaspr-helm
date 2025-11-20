@@ -80,7 +80,15 @@ spec:
             {{- if .Values.operator.env.autoRebalanceEnabled }}
             - name: AUTO_REBALANCE_ENABLED
               value: "{{ .Values.operator.env.autoRebalanceEnabled }}"
-            {{- end }}            
+            {{- end }}
+            {{- if .Values.operator.env.hungMemberDetectionEnabled }}
+            - name: HUNG_MEMBER_DETECTION_ENABLED
+              value: "{{ .Values.operator.env.hungMemberDetectionEnabled }}"
+            {{- end }}
+            {{- if .Values.operator.env.hungRebalancingThresholdSeconds }}
+            - name: HUNG_REBALANCING_THRESHOLD_SECONDS
+              value: "{{ .Values.operator.env.hungRebalancingThresholdSeconds }}"
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.operator.service.port }}

@@ -74,6 +74,10 @@ operator:
     clientStatusCheckEnabled: ""
     # Set client status check timeout in seconds
     clientStatusCheckTimeoutSeconds: ""
+    # Enable automatic detection and recovery of members stuck in rebalancing state (default: true)
+    hungMemberDetectionEnabled: ""
+    # Time threshold in seconds before a rebalancing member is considered hung (default: 300)
+    hungRebalancingThresholdSeconds: ""
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious

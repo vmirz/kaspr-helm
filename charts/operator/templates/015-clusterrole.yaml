@@ -32,6 +32,10 @@ rules:
   - watch
   - list
 
+- apiGroups: [""]
+  resources: ["pods/exec"]
+  verbs: ["create"]  
+
 - apiGroups:
   - "kaspr.io"
   resources:

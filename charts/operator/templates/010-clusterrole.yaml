@@ -28,6 +28,8 @@ rules:
   - secrets
     # The cluster operator needs to access and manage persistent volume claims to bind them to Kaspr components for persistent data
   - persistentvolumeclaims
+    # The cluster operator needs to access and manage pods/exec to run commands inside Kaspr component pods 
+  - pods/exec
   verbs:
   - get
   - list
@@ -36,9 +38,6 @@ rules:
   - delete
   - patch
   - update
-- apiGroups: [""]
-  resources: ["pods/exec"]
-  verbs: ["create"]  
 - apiGroups:
   - "apps"
   resources:

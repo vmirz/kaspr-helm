@@ -31,6 +31,13 @@ rules:
   verbs:
   - watch
   - list
+- apiGroups:
+  - "storage.k8s.io"
+  resources:
+  - storageclasses
+  verbs:
+  - get
+  - list
 
 - apiGroups:
   - "kaspr.io"

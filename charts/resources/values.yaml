@@ -59,8 +59,8 @@ apps:
     # when the app is un-deployed.
     deleteClaim: True
 
-# TODO
 agents: []
 tables: []
 tasks: []
-webviews: []    
+webviews: []
+joins: []

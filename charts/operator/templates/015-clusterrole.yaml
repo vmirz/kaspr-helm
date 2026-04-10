@@ -48,6 +48,7 @@ rules:
   - kasprwebviews
   - kasprtables
   - kasprtasks
+  - kasprjoins
   verbs:
   - get
   - list
@@ -66,6 +67,7 @@ rules:
   - kasprwebviews/status
   - kasprtables/status
   - kasprtasks/status
+  - kasprjoins/status
   verbs:
   - get
   - patch

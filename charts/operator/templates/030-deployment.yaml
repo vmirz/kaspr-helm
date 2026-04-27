@@ -89,6 +89,10 @@ spec:
             - name: HUNG_REBALANCING_THRESHOLD_SECONDS
               value: "{{ .Values.operator.env.hungRebalancingThresholdSeconds }}"
             {{- end }}
+            {{- if .Values.operator.env.kasprImageRegistry }}
+            - name: KASPR_IMAGE_REGISTRY
+              value: "{{ .Values.operator.env.kasprImageRegistry }}"
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.operator.service.port }}

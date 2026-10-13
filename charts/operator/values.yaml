@@ -81,6 +81,8 @@ operator:
     # Custom container image registry for Kaspr application images (default: Docker Hub)
     # e.g. "myregistry.azurecr.io" will prefix all kaspr app images with this registry
     kasprImageRegistry: ""
+    # Image used by Python packages installation init containers (default: python:3.12-bookworm)
+    pythonPackagesInitImage: ""
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious

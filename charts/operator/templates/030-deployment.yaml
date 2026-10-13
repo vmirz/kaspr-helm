@@ -93,6 +93,10 @@ spec:
             - name: KASPR_IMAGE_REGISTRY
               value: "{{ .Values.operator.env.kasprImageRegistry }}"
             {{- end }}
+            {{- if .Values.operator.env.pythonPackagesInitImage }}
+            - name: PYTHON_PACKAGES_INIT_IMAGE
+              value: "{{ .Values.operator.env.pythonPackagesInitImage }}"
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.operator.service.port }}

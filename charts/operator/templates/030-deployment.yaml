@@ -77,6 +77,14 @@ spec:
             - name: CLIENT_STATUS_CHECK_TIMEOUT_SECONDS
               value: "{{ .Values.operator.env.clientStatusCheckTimeoutSeconds }}"
             {{- end }}
+            {{- if ne (toString .Values.operator.env.statusUpdateIntervalSeconds) "" }}
+            - name: STATUS_UPDATE_INTERVAL_SECONDS
+              value: "{{ .Values.operator.env.statusUpdateIntervalSeconds }}"
+            {{- end }}
+            {{- if ne (toString .Values.operator.env.reconcileIntervalSeconds) "" }}
+            - name: RECONCILE_INTERVAL_SECONDS
+              value: "{{ .Values.operator.env.reconcileIntervalSeconds }}"
+            {{- end }}
             {{- if .Values.operator.env.autoRebalanceEnabled }}
             - name: AUTO_REBALANCE_ENABLED
               value: "{{ .Values.operator.env.autoRebalanceEnabled }}"

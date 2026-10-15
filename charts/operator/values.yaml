@@ -74,6 +74,10 @@ operator:
     clientStatusCheckEnabled: ""
     # Set client status check timeout in seconds
     clientStatusCheckTimeoutSeconds: ""
+    # Set the interval in seconds between KasprApp status updates (default: 30)
+    statusUpdateIntervalSeconds: ""
+    # Set the interval in seconds between periodic reconciliations (default: 300; 0 disables)
+    reconcileIntervalSeconds: ""
     # Enable automatic detection and recovery of members stuck in rebalancing state (default: true)
     hungMemberDetectionEnabled: ""
     # Time threshold in seconds before a rebalancing member is considered hung (default: 300)

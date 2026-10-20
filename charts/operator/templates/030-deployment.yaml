@@ -85,9 +85,25 @@ spec:
             - name: RECONCILE_INTERVAL_SECONDS
               value: "{{ .Values.operator.env.reconcileIntervalSeconds }}"
             {{- end }}
-            {{- if .Values.operator.env.autoRebalanceEnabled }}
+            {{- if ne (toString .Values.operator.env.autoRebalanceEnabled) "" }}
             - name: AUTO_REBALANCE_ENABLED
               value: "{{ .Values.operator.env.autoRebalanceEnabled }}"
+            {{- end }}
+            {{- if ne (toString .Values.operator.env.rebalanceCheckIntervalSeconds) "" }}
+            - name: REBALANCE_CHECK_INTERVAL_SECONDS
+              value: "{{ .Values.operator.env.rebalanceCheckIntervalSeconds }}"
+            {{- end }}
+            {{- if ne (toString .Values.operator.env.rebalanceVerifyDelaySeconds) "" }}
+            - name: REBALANCE_VERIFY_DELAY_SECONDS
+              value: "{{ .Values.operator.env.rebalanceVerifyDelaySeconds }}"
+            {{- end }}
+            {{- if ne (toString .Values.operator.env.rebalanceMaxAttempts) "" }}
+            - name: REBALANCE_MAX_ATTEMPTS
+              value: "{{ .Values.operator.env.rebalanceMaxAttempts }}"
+            {{- end }}
+            {{- if ne (toString .Values.operator.env.rebalanceVerifyTimeoutSeconds) "" }}
+            - name: REBALANCE_VERIFY_TIMEOUT_SECONDS
+              value: "{{ .Values.operator.env.rebalanceVerifyTimeoutSeconds }}"
             {{- end }}
             {{- if .Values.operator.env.hungMemberDetectionEnabled }}
             - name: HUNG_MEMBER_DETECTION_ENABLED

@@ -69,7 +69,7 @@ spec:
             - name: STATEFULSET_DELETION_TIMEOUT_SECONDS
               value: "{{ .Values.operator.env.statefulsetDeletionTimeoutSeconds }}"
             {{- end }}
-            {{- if .Values.operator.env.clientStatusCheckEnabled }}
+            {{- if ne (toString .Values.operator.env.clientStatusCheckEnabled) "" }}
             - name: CLIENT_STATUS_CHECK_ENABLED
               value: "{{ .Values.operator.env.clientStatusCheckEnabled }}"
             {{- end }}
@@ -105,7 +105,7 @@ spec:
             - name: REBALANCE_VERIFY_TIMEOUT_SECONDS
               value: "{{ .Values.operator.env.rebalanceVerifyTimeoutSeconds }}"
             {{- end }}
-            {{- if .Values.operator.env.hungMemberDetectionEnabled }}
+            {{- if ne (toString .Values.operator.env.hungMemberDetectionEnabled) "" }}
             - name: HUNG_MEMBER_DETECTION_ENABLED
               value: "{{ .Values.operator.env.hungMemberDetectionEnabled }}"
             {{- end }}

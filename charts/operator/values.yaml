@@ -102,6 +102,14 @@ operator:
     kasprImageRegistry: ""
     # Image used by Python packages installation init containers (default: python:3.12-bookworm)
     pythonPackagesInitImage: ""
+    # How KasprApps without the kaspr.io/definitions-delivery annotation get their components:
+    # "components" (a ConfigMap and a mount per component) or "bundle" (all components in
+    # immutable ConfigMaps, one mount per shard). A change applies to an app only at its next
+    # rollout (default: components)
+    definitionsDeliveryDefault: ""
+    # Bytes of definitions a bundle shard holds before webviews spill into the next one
+    # (default: 524288; 65536 to 1000000)
+    definitionsBundleShardBytes: ""
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious

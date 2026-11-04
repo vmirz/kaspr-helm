@@ -121,6 +121,14 @@ spec:
             - name: PYTHON_PACKAGES_INIT_IMAGE
               value: "{{ .Values.operator.env.pythonPackagesInitImage }}"
             {{- end }}
+            {{- if .Values.operator.env.definitionsDeliveryDefault }}
+            - name: DEFINITIONS_DELIVERY_DEFAULT
+              value: "{{ .Values.operator.env.definitionsDeliveryDefault }}"
+            {{- end }}
+            {{- if .Values.operator.env.definitionsBundleShardBytes }}
+            - name: DEFINITIONS_BUNDLE_SHARD_BYTES
+              value: "{{ .Values.operator.env.definitionsBundleShardBytes }}"
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.operator.service.port }}
